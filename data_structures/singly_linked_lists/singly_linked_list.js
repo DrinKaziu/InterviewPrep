@@ -60,6 +60,20 @@ class SinglyLinkedList {
     if(this.length === 0) this.tail = null;
     return currentHead;
   }
+
+  unshift(val) {
+    let newNode = new Node(val);
+    if(!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else { // you have to have else here
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+
+    this.length++
+    return this;
+  }
 }
 
 // let list = new SinglyLinkedList();
