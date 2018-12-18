@@ -142,10 +142,6 @@ class SinglyLinkedList {
       node = next;
     }
 
-    return this; 
+    return this;
   }
 }
-
-// let list = new SinglyLinkedList();
-// list.push('Hi');
-// list.push('there');
