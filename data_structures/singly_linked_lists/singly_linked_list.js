@@ -116,6 +116,17 @@ class SinglyLinkedList {
     this.length++;
     return true;
   }
+
+  remove(idx) {
+    if(idx < 0 || idx >= this.length) return undefined;
+    if(idx === this.length - 1) return this.pop();
+    if(idx === 0) return this.shift();
+    let nodeToRemove = this.get(idx);
+    let prev = this.get(idx - 1);
+    prev.next = nodeToRemove.next;
+    this.length--
+    return nodeToRemove;
+  }
 }
 
 // let list = new SinglyLinkedList();
