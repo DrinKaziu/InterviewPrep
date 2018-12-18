@@ -47,9 +47,18 @@ class SinglyLinkedList {
     this.length--;
     if(this.length === 0) { //we do this because it doesn't work when there's one item left on the list
       this.head = null;
-      this.tail = null
+      this.tail = null;
     }
     return current;
+  }
+
+  shift() {
+    if(!this.head) return undefined;
+    let currentHead = this.head;
+    this.head = currentHead.next;
+    this.length--;
+    if(this.length === 0) this.tail = null;
+    return currentHead;
   }
 }
 
