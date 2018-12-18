@@ -24,12 +24,18 @@ function mostDigits(nums) {
 // Radix Sort
 function radixSort(nums) {
   let maxDigitCount = mostDigits(nums);
+
   for(let k = 0; k < maxDigitCount; k++) {
     let digitBuckets = Array.from({length: 10}, () => []); //create a bucket(array) of 10 empty arrays
+
     for(let i = 0; i < nums.length; i++) {
       let num = nums[i];
       let digit = getDigit(num, k)
       digitBuckets[digit].push(num);
     }
+
+    nums = [].concat(...digitBuckets);
   }
+
+  return nums; 
 }
