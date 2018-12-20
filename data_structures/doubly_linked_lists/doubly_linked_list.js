@@ -76,9 +76,10 @@ class DoublyLinkedList {
 
   get(idx) {
     if(idx < 0 || idx >= this.length) return null;
+    let current, counter;
     if(idx <= this.length / 2) {
-      let current = this.head;
-      let counter = 0;
+      current = this.head;
+      counter = 0;
       while(idx !== counter) {
         current = current.next;
         counter++;
@@ -86,15 +87,24 @@ class DoublyLinkedList {
 
       return current;
     } else {
-      let current = this.tail;
-      let counter = this.length - 1;
+      current = this.tail;
+      counter = this.length - 1;
       while(idx !== counter) {
         current = current.prev;
         counter--;
       }
 
-      return current; 
+      return current;
+    }
+  }
+
+  set(idx, newVal) {
+    let foundNode = this.get(idx);
+    if(foundNode) {
+      foundNode.val = newVal;
+      return true;
     }
 
+    return false;
   }
 }
