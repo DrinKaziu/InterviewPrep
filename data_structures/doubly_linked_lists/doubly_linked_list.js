@@ -116,12 +116,30 @@ class DoublyLinkedList {
     let newNode = new Node(val);
     let beforeNode = this.get(idx - 1);
     let afterNode = beforeNode.next;
-    
+
     beforeNode.next = newNode;
     newNode.prev = beforeNode;
     newNode.next = afterNode;
     afterNode.prev = newNode;
     this.length++;
     return true;
+  }
+
+  remove(idx) {
+    if(idx < 0 || idx >= this.length) return undefined;
+    if(idx === this.length - 1) return this.pop();
+    if(idx === 0) return this.shift();
+
+    let nodeToRemove = this.get(idx);
+    let beforeNode = nodeToRemove.prev;
+    let afterNode = nodeToRemove.next;
+
+    beforeNode.next = afterNode;
+    afterNode.prev = beforeNode;
+    nodeToRemove.prev = null;
+    nodeToRemove.next = null;
+
+    this.length--;
+    return nodeToRemove;
   }
 }
